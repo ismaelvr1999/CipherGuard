@@ -1,0 +1,34 @@
+.grid-nav{
+    grid-area: nav;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: #222222;
+    padding: 10px;
+    
+}
+.nav-title{
+    text-align: center;
+}
+
+.nav-list-links{
+    display: flex;
+    flex-direction: column;
+    padding-left: 0px;
+    margin: 0px;
+
+}
+.nav-list-links li{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+.nav-list-links li h2{
+    font-weight: lighter;
+}
+.menu-icon{
+    font-size: 45px;
+    margin-right: 10px;
+}

@@ -1,0 +1,36 @@
+.grid-container {
+    height: 100vh;
+    width: 100%;
+    background-color: #2C2C2C;
+    display: grid;
+    grid-template-rows: 10% 90%;
+    grid-template-columns: 20% 80%;
+    grid-template-areas: 
+    'nav header'
+    'nav section'
+    ;
+    font-family: Helvetica, sans-serif;
+
+}
+
+.info-account{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-top: auto;
+}
+.info-account h2{
+   font-weight: lighter;
+   margin-left: 10px;
+}
+
+.grid-header{
+    grid-area: header;
+    border-bottom: rgb(102, 97, 97) solid 1px;
+    
+}
+
+.grid-section{
+ grid-area: section;
+ 
+}
