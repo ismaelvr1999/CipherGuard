@@ -23,7 +23,7 @@ const Navbar = () => {
         </li>
         <li>
           <Icon className="menu-icon" icon="material-symbols-light:password" />{" "}
-          <h2><Link to="/logins">Websites Accounts</Link></h2>
+          <h2><Link to="/website-accounts">Websites Accounts</Link></h2>
         </li>
         <li>
           <Icon className="menu-icon" icon="quill:creditcard" />

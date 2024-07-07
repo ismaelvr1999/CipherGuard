@@ -1,3 +1,6 @@
-.nav{
-    height: 100px;
+
+.grid-header{
+    grid-area: header;
+    color: white;
+    padding: 0px 10px;
 }

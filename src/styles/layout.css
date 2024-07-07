@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 .grid-container {
     height: 100vh;
     width: 100%;
@@ -10,6 +13,8 @@
     'nav section'
     ;
     font-family: Helvetica, sans-serif;
+    box-sizing: border-box;
+    color: white;
 
 }
 
@@ -22,12 +27,6 @@
 .info-account h2{
    font-weight: lighter;
    margin-left: 10px;
-}
-
-.grid-header{
-    grid-area: header;
-    border-bottom: rgb(102, 97, 97) solid 1px;
-    
 }
 
 .grid-section{

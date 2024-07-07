@@ -1,5 +1,6 @@
 import React from "react";
 import '../../styles/layout.css';
+import '../../styles/header.css';
 import Navbar from "./navbar";
 import { Outlet,Navigate} from "react-router-dom";
 const Layout = ()=>{
@@ -7,10 +8,7 @@ const Layout = ()=>{
     return(
         <div className="grid-container">
             <Navbar />
-            <header className="grid-header"></header>
-            <div className="grid-section"> 
-                <Outlet />
-            </div>
+            <Outlet />
         </div>
     );
 }
