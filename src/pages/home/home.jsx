@@ -3,6 +3,7 @@ import "../../styles/home.css";
 import { Icon } from "@iconify/react";
 import { getUser } from "../../api/user";
 import { getTotalWebAccountsByUser } from "../../api/websiteAccounts";
+import { Navigate } from "react-router-dom";
 
 const Home = () => {
   const [user, setUser] = useState(null);
@@ -18,8 +19,9 @@ const Home = () => {
         setUser(result.data);
       })
       .catch((error) => {
-        console.error("Error fetching user:", error);
+        console.error("Error fetching getUser:", error.message);
         localStorage.clear();
+        return <Navigate to="/login"/>
       });
 
     getTotalWebAccountsByUser({
@@ -28,17 +30,19 @@ const Home = () => {
       },
     }).then((result) => {
       setTotalwebsiteAccounts(result.data);
+
     })
     .catch((error) => {
-      console.error("Error fetching user:", error);
+      console.error("Error fetching TotalWebAccountsByUser:", error.message);
       localStorage.clear();
+      return <Navigate to="/login"/>
     });
-  }, []);
+  }, [setTotalwebsiteAccounts,setUser]);
 
   return (
     <>
       <header className="grid-header">
-        {user && <h1>Welcome {user.data.first_name}</h1>}
+        {user && <h2>Welcome {user.data.first_name}</h2>}
       </header>
       <div className="grid-section">
         <div className="container-profile">
@@ -72,17 +76,17 @@ const Home = () => {
               className="summary-icon"
               icon="material-symbols-light:password"
             />
-            <h3>Websites Accounts</h3>
+            <h3>Total Websites Accounts</h3>
              <h3>{totalwebsiteAccounts && totalwebsiteAccounts.data.total}</h3>
           </div>
           <div className="summary-card">
             <Icon className="summary-icon" icon="quill:creditcard" />
-            <h3>Credit Cards</h3>
+            <h3>Total Credit Cards</h3>
             <h3>0</h3>
           </div>
           <div className="summary-card">
             <Icon className="summary-icon" icon="solar:user-outline" />
-            <h3>IDs</h3>
+            <h3>Total IDs</h3>
             <h3>0</h3>
           </div>
         </div>

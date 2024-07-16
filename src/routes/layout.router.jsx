@@ -1,5 +1,6 @@
 import Layout from "../pages/layout/layout";
 import Home from "../pages/home/home";
+import WebsiteAccounts from "../pages/websitesAccounts/websitesAccounts";
 const router = {
   path:"/",
   element: <Layout />,
@@ -10,8 +11,13 @@ const router = {
     },
     {
       path: "/website-accounts",
-      element: <div>Hello world! 2</div>,
+      element: <WebsiteAccounts />,
+    },
+    {
+      path: "/website-accounts/addweb",
+      element: <h1>Hola mundo</h1>,
     }
+
   ]
 };
 

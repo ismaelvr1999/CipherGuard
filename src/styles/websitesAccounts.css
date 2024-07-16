@@ -1,0 +1,86 @@
+.grid-header{
+    display: flex;
+    align-items: center;
+}
+
+.search-container{
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+
+}
+
+.search-container input{
+    background-color: #2C2C2C;
+    border: rgb(102, 97, 97) solid 1px;
+    border-radius: 10px;
+    color: white;
+    height: 37px;
+    margin: 0px 5px;
+    width: 80%;
+}
+.search-container button{
+   background-color: transparent;
+   margin: 0px 5px;
+   border: none;
+   cursor:pointer;
+   display: flex;
+   align-items: center;
+}
+.search-icon{
+    font-size: 30px;
+    color: white;
+}
+.add-container{
+    margin: 0px 5px;
+}
+.add-container button{
+    padding: 7px;
+    font-size: 18px;
+    background-color: #37BE2B;
+    color: white;
+    border: none;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.reload-container{
+    margin: 0px 5px;
+}
+
+.reload-container button{
+    background-color: transparent;
+    margin: 0px 5px;
+    border: none;
+    cursor:pointer;
+    display: flex;
+    align-items: center;
+}
+
+.reload-icon{
+    font-size: 25px;
+    color: white;
+}
+
+.table-container{
+    width: 100%;
+    text-align: left;
+    font-size: 17px;
+    border-collapse: collapse;
+}
+
+.table-container th,td{
+    border-bottom: 1px solid #7E7E7E;
+    margin: 0px;
+    border-spacing: 0px;
+    padding: 10px;
+}
+
+.icon-more{
+    font-size: 35px;
+}
+
+.link-more{
+    color: white;
+
+}
