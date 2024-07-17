@@ -8,3 +8,6 @@ export const getAllWebsiteAccounts = async (RequestConfig)=>{
     return await axios.get("/website-account",RequestConfig);
 }
 
+export const addWebsiteAccount = async (newWebsiteAccount,headers)=>{
+    return await axios.post("/website-account",newWebsiteAccount,headers);
+}

@@ -3,11 +3,11 @@ import "../../styles/home.css";
 import { Icon } from "@iconify/react";
 import { getUser } from "../../api/user";
 import { getTotalWebAccountsByUser } from "../../api/websiteAccounts";
-import { Navigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [user, setUser] = useState(null);
   const [totalwebsiteAccounts, setTotalwebsiteAccounts] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     getUser({
@@ -21,7 +21,7 @@ const Home = () => {
       .catch((error) => {
         console.error("Error fetching getUser:", error.message);
         localStorage.clear();
-        return <Navigate to="/login"/>
+        navigate("/login");
       });
 
     getTotalWebAccountsByUser({
@@ -35,9 +35,9 @@ const Home = () => {
     .catch((error) => {
       console.error("Error fetching TotalWebAccountsByUser:", error.message);
       localStorage.clear();
-      return <Navigate to="/login"/>
+      navigate("/login");
     });
-  }, [setTotalwebsiteAccounts,setUser]);
+  }, [setTotalwebsiteAccounts,setUser,navigate]);
 
   return (
     <>

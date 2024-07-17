@@ -33,5 +33,6 @@
 .grid-section{
  grid-area: section;
  padding: 0px 15px;
+ overflow: scroll;
  
 }

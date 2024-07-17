@@ -1,26 +1,29 @@
 import { Icon } from "@iconify/react";
 import "../../styles/websitesAccounts.css";
 import { useEffect, useState } from "react";
-import {getAllWebsiteAccounts} from "../../api/websiteAccounts";
-import { Navigate,Link } from "react-router-dom";
+import { getAllWebsiteAccounts } from "../../api/websiteAccounts";
+import { Link } from "react-router-dom";
 import formatDate from "../../utils/formatDate";
+import { useNavigate } from "react-router-dom";
 const WebsiteAccounts = () => {
-  const [websitesAccounts,setWebsitesAccounts] = useState(null);
+  const [websitesAccounts, setWebsitesAccounts] = useState(null);
+  const navigate = useNavigate();
 
-  useEffect(()=>{
+  useEffect(() => {
     getAllWebsiteAccounts({
       headers: {
         Authorization: localStorage.getItem("token"),
       },
-    }).then((result) => {
-      setWebsitesAccounts(result.data);
     })
-    .catch((error) => {
-      console.error("Error fetching getAllWebsiteAccounts:", error.message);
-      localStorage.clear();
-      return <Navigate to="/login"/>
-    });
-  },[setWebsitesAccounts])
+      .then((result) => {
+        setWebsitesAccounts(result.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching getAllWebsiteAccounts:", error.message);
+        localStorage.clear();
+        navigate("/login");
+      });
+  }, [setWebsitesAccounts, navigate]);
 
   return (
     <>
@@ -36,11 +39,9 @@ const WebsiteAccounts = () => {
           </button>
           <input placeholder="Search" type="text" />
         </form>
-
-        <form className="add-container">
-          <button>+ Add</button>
-        </form>
-
+        <Link className="link-add" to="/website-accounts/add-new-account">
+          + Add
+        </Link>
         <form className="reload-container">
           <button>
             <Icon className="reload-icon" icon="bytesize:reload" />
@@ -49,7 +50,6 @@ const WebsiteAccounts = () => {
       </header>
 
       <div className="grid-section">
-
         <table className="table-container">
           <thead>
             <tr>
@@ -61,25 +61,31 @@ const WebsiteAccounts = () => {
             </tr>
           </thead>
           <tbody>
-            {
-              websitesAccounts && websitesAccounts.data.map((account)=>{
-                return(
-                <tr key={account.page_id}>
+            {websitesAccounts &&
+              websitesAccounts.data.map((account) => {
+                return (
+                  <tr key={account.page_id}>
                     <td>{account.page_name}</td>
                     <td>{account.email}</td>
                     <td>{account.category}</td>
                     <td>{formatDate(account.creation_date)}</td>
-                    <td><Link className="link-more" to="/"><Icon className="icon-more" icon="mingcute:more-4-line" /></Link></td>
-                </tr>)
-              })
-            }
-
+                    <td>
+                      <Link
+                        className="link-more"
+                        to={"/website-accounts/" + account.page_id}
+                      >
+                        <Icon
+                          className="icon-more"
+                          icon="mingcute:more-4-line"
+                        />
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
-
         </table>
-
       </div>
-      
     </>
   );
 };
