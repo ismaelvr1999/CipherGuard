@@ -1,13 +1,15 @@
 import { Icon } from "@iconify/react";
 import "../../styles/websitesAccounts.css";
 import { useEffect, useState } from "react";
-import { getAllWebsiteAccounts,deleteWebAccount } from "../../api/websiteAccounts";
+import { getAllWebsiteAccounts,deleteWebAccount,searchWebAccount } from "../../api/websiteAccounts";
 import { Link } from "react-router-dom";
 import formatDate from "../../utils/formatDate";
 import { useNavigate } from "react-router-dom";
 const WebsiteAccounts = () => {
   const [websitesAccounts, setWebsitesAccounts] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
+
   const reloadTableData = async () => {
     await getAllWebsiteAccounts({
       headers: {
@@ -52,23 +54,36 @@ const WebsiteAccounts = () => {
     });
   }
 
+  const handleSearch = async (e)=>{
+    e.preventDefault();
+    await searchWebAccount(searchValue).then((result) => {
+      setWebsitesAccounts(result.data);
+    })
+    .catch((error) => {
+      setWebsitesAccounts(null);
+    });
+
+  }
+
   return (
     <>
       <header className="grid-header">
         <h2>Websites Accounts</h2>
 
-        <form className="search-container">
+        <form className="search-container" onSubmit={handleSearch}>
           <button>
             <Icon
               className="search-icon"
               icon="material-symbols-light:search"
             />
           </button>
-          <input placeholder="Search" type="text" />
+          <input placeholder="Search" type="search" value={searchValue || ''} onChange={(e)=> setSearchValue(e.target.value)}/>
         </form>
+
         <Link className="link-add" to="/website-accounts/add-new-account">
           + Add
         </Link>
+
         <form className="reload-container">
           <button type="button" onClick={reloadTableData}>
             <Icon className="reload-icon" icon="bytesize:reload" />

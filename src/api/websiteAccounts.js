@@ -35,3 +35,15 @@ export const deleteWebAccount = async (id)=>{
       },
     });
 }
+
+export const searchWebAccount = async (searchValue)=>{
+  return await axios.get(`/website-account`,{
+      headers: {
+        Authorization: localStorage.getItem("token")
+      },
+      params: {
+        search: searchValue.trim()
+    }
+    });
+}
+
