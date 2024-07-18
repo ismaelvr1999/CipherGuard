@@ -1,13 +1,26 @@
 import { Icon } from "@iconify/react";
 import "../../styles/websitesAccounts.css";
 import { useEffect, useState } from "react";
-import { getAllWebsiteAccounts } from "../../api/websiteAccounts";
+import { getAllWebsiteAccounts,deleteWebAccount } from "../../api/websiteAccounts";
 import { Link } from "react-router-dom";
 import formatDate from "../../utils/formatDate";
 import { useNavigate } from "react-router-dom";
 const WebsiteAccounts = () => {
   const [websitesAccounts, setWebsitesAccounts] = useState(null);
   const navigate = useNavigate();
+  const reloadTableData = async () => {
+    await getAllWebsiteAccounts({
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    })
+      .then((result) => {
+        setWebsitesAccounts(result.data);
+      })
+      .catch((error) => {
+        setWebsitesAccounts(null);
+      });
+  }
 
   useEffect(() => {
     getAllWebsiteAccounts({
@@ -19,11 +32,25 @@ const WebsiteAccounts = () => {
         setWebsitesAccounts(result.data);
       })
       .catch((error) => {
-        console.error("Error fetching getAllWebsiteAccounts:", error.message);
-        localStorage.clear();
-        navigate("/login");
+        console.log("No websiteAccounts");
       });
-  }, [setWebsitesAccounts, navigate]);
+  }, [ navigate]);
+
+  const handleDelete = async (e)=>{
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const page_id= formData.get("page_id");
+    await deleteWebAccount(page_id)
+    .then(() => {
+      alert("Account deleted");
+      reloadTableData();
+    })
+    .catch((error) => {
+      console.error("Error fetching handleDelete:", error.message);
+      localStorage.clear();
+      navigate("/login");
+    });
+  }
 
   return (
     <>
@@ -43,7 +70,7 @@ const WebsiteAccounts = () => {
           + Add
         </Link>
         <form className="reload-container">
-          <button>
+          <button type="button" onClick={reloadTableData}>
             <Icon className="reload-icon" icon="bytesize:reload" />
           </button>
         </form>
@@ -54,6 +81,7 @@ const WebsiteAccounts = () => {
           <thead>
             <tr>
               <th>Website</th>
+              <th>User name</th>
               <th>Email</th>
               <th>Category</th>
               <th>Creation Date</th>
@@ -66,10 +94,21 @@ const WebsiteAccounts = () => {
                 return (
                   <tr key={account.page_id}>
                     <td>{account.page_name}</td>
+                    <td>{account.user_name}</td>
                     <td>{account.email}</td>
                     <td>{account.category}</td>
                     <td>{formatDate(account.creation_date)}</td>
                     <td>
+                      <form onSubmit={handleDelete}>
+                        <input name="page_id" type="hidden" defaultValue={account.page_id} />
+                        <button type="submit" className="btn-delete">  
+                        <Icon
+                        className="icon-delete"
+                          icon="typcn:delete-outline"
+                        />
+                        </button>
+                      </form>
+
                       <Link
                         className="link-more"
                         to={"/website-accounts/" + account.page_id}

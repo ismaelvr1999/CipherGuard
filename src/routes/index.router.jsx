@@ -2,7 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import loginRouter from "./login.router";
 import homeRouter from "./home.router";
 import webSiteAccountsRouter from "./websiteAccounts.router";
-import AddWebsiteAccountRouter from "./addWebsiteAccount.router";
+import addWebsiteAccountRouter from "./addWebsiteAccount.router";
+import detailsWebsiteAccountRouter from "./detailsWebsiteAccount.router";
 import Layout from "../pages/layout/layout";
 
 const router = createBrowserRouter([
@@ -12,7 +13,8 @@ const router = createBrowserRouter([
     children: [
       homeRouter,
       webSiteAccountsRouter,
-      AddWebsiteAccountRouter
+      addWebsiteAccountRouter,
+      detailsWebsiteAccountRouter
     ]
   }, 
   loginRouter

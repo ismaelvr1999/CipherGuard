@@ -1,0 +1,10 @@
+#button-update{
+    background-color: #1E40F0;
+    color: white;
+    font-size: medium;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    margin-left: auto;
+    cursor: pointer;
+}
