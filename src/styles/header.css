@@ -3,4 +3,6 @@
     grid-area: header;
     color: white;
     padding: 0px 10px;
+    display: flex;
+    align-items: center;
 }

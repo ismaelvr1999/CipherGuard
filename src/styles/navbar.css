@@ -34,8 +34,13 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: auto;
 
 }
+.info-account h2{
+    font-weight: lighter;
+ }
+ 
 .account-icon{
     font-size: 40px;
 }

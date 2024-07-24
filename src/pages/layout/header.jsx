@@ -1,10 +1,12 @@
 import React from "react";
+import '../../styles/header.css'
 
-const Header = ()=>{
+const Header = ({children,title})=>{
     return (
-        <div className="nav">
-            <h2>CipherGuard</h2>
-        </div>
+        <header className="grid-header">
+            <h2>{title}</h2>
+            {children}
+        </header>
     );
 }
 export default Header;

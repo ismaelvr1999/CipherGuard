@@ -19,17 +19,6 @@
 
 }
 
-.info-account{
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    margin-top: auto;
-}
-.info-account h2{
-   font-weight: lighter;
-   margin-left: 10px;
-}
-
 .grid-section{
  grid-area: section;
  padding: 0px 15px;

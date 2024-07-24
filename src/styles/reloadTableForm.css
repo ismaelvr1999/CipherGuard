@@ -1,0 +1,17 @@
+.reload-container{
+    margin: 0px 5px;
+}
+
+.reload-container button{
+    background-color: transparent;
+    margin: 0px 5px;
+    border: none;
+    cursor:pointer;
+    display: flex;
+    align-items: center;
+}
+
+.reload-icon{
+    font-size: 25px;
+    color: white;
+}

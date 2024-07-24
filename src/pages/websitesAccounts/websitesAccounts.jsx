@@ -1,10 +1,16 @@
-import { Icon } from "@iconify/react";
 import "../../styles/websitesAccounts.css";
 import { useEffect, useState } from "react";
 import { getAllWebsiteAccounts,deleteWebAccount,searchWebAccount } from "../../api/websiteAccounts";
 import { Link } from "react-router-dom";
 import formatDate from "../../utils/formatDate";
 import { useNavigate } from "react-router-dom";
+import Header from "../layout/header";
+import SearchForm from "../../components/searchForm";
+import ReloadTableForm from "../../components/reloadTableForm";
+import DeleteForm from "../../components/deleteForm";
+import MoreLink from "../../components/moreLink";
+import Table from "../../components/table";
+
 const WebsiteAccounts = () => {
   const [websitesAccounts, setWebsitesAccounts] = useState(null);
   const [searchValue, setSearchValue] = useState("");
@@ -67,32 +73,18 @@ const WebsiteAccounts = () => {
 
   return (
     <>
-      <header className="grid-header">
-        <h2>Websites Accounts</h2>
-
-        <form className="search-container" onSubmit={handleSearch}>
-          <button>
-            <Icon
-              className="search-icon"
-              icon="material-symbols-light:search"
-            />
-          </button>
-          <input placeholder="Search" type="search" value={searchValue || ''} onChange={(e)=> setSearchValue(e.target.value)}/>
-        </form>
+      <Header title="Websites Accounts">
+      <SearchForm handleSearch={handleSearch} searchValue={searchValue} setSearchValue={setSearchValue}/>
 
         <Link className="link-add" to="/website-accounts/add-new-account">
           + Add
         </Link>
 
-        <form className="reload-container">
-          <button type="button" onClick={reloadTableData}>
-            <Icon className="reload-icon" icon="bytesize:reload" />
-          </button>
-        </form>
-      </header>
+        <ReloadTableForm reloadTableData={reloadTableData} />
+      </Header>
 
       <div className="grid-section">
-        <table className="table-container">
+        <Table>
           <thead>
             <tr>
               <th>Website</th>
@@ -114,31 +106,14 @@ const WebsiteAccounts = () => {
                     <td>{account.category}</td>
                     <td>{formatDate(account.creation_date)}</td>
                     <td>
-                      <form onSubmit={handleDelete}>
-                        <input name="page_id" type="hidden" defaultValue={account.page_id} />
-                        <button type="submit" className="btn-delete">  
-                        <Icon
-                        className="icon-delete"
-                          icon="typcn:delete-outline"
-                        />
-                        </button>
-                      </form>
-
-                      <Link
-                        className="link-more"
-                        to={"/website-accounts/" + account.page_id}
-                      >
-                        <Icon
-                          className="icon-more"
-                          icon="mingcute:more-4-line"
-                        />
-                      </Link>
+                      <DeleteForm handleDelete={handleDelete} id={account.page_id} inputName="page_id"/>
+                      <MoreLink to={"/website-accounts/" + account.page_id} />
                     </td>
                   </tr>
                 );
               })}
           </tbody>
-        </table>
+        </Table>
       </div>
     </>
   );

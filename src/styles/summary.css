@@ -1,0 +1,16 @@
+.summary-container{
+    display: flex;
+    padding:30px 10px;
+    justify-content: space-evenly;
+}
+.summary-card{
+    background-color: #222222;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 25%;
+    box-shadow: rgba(184, 170, 170, 0.2) 0px 7px 29px 0px;
+}
+.summary-icon{
+    font-size: 70px;
+}

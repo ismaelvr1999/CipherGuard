@@ -21,10 +21,10 @@ export const getWebsiteAccount = async (page_id)=>{
 }
 
 export const updateWebAccount = async (websiteAccount)=>{
-    return await axios.put(`/website-account`,websiteAccount,{
+    return await axios.put(`/website-account/${websiteAccount.page_id}`,websiteAccount,{
         headers: {
           Authorization: localStorage.getItem("token")
-        },
+        }
       });
 }
 
@@ -32,7 +32,7 @@ export const deleteWebAccount = async (id)=>{
   return await axios.delete(`/website-account/${id}`,{
       headers: {
         Authorization: localStorage.getItem("token")
-      },
+      }
     });
 }
 

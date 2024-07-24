@@ -37,10 +37,6 @@ const DetailsWebsiteAccount = () => {
       localStorage.clear();
       navigate("/login");
     });
-
-    console.log(updateWebsiteAccount);
-
-
   };
 
   return (

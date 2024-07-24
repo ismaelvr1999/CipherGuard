@@ -1,0 +1,24 @@
+.icon-more{
+    font-size: 35px;
+    color: blue;
+}
+
+.link-more{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    margin: 0px 2px;
+}
+.link-add{
+    margin: 0px 5px;
+    padding: 7px;
+    font-size: 18px;
+    background-color: #37BE2B;
+    color: white;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
