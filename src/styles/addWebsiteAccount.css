@@ -1,35 +1,9 @@
-
-.form-container{
+.container-addwebsite{
     display: flex;
     justify-content: center;
 }
 
-.form-addwebsite{
-    width: 70%;
-}
-.form-addwebsite input, .form-addwebsite select{
-    background-color: #222222;
-    border: rgb(102, 97, 97) solid 1px;
-    border-radius: 10px;
-    font-size: medium;
-    padding: 8px;
-    width: 100%;
-    color: white
-}
-
-.form-addwebsite textarea{
-    background-color: #222222;
-    display: block;
-    border: rgb(102, 97, 97) solid 1px;
-    border-radius: 10px;
-    font-family: Helvetica, sans-serif;
-    font-size: large;
-    padding: 5px;
-    width: 100%;
-    color: white
-}
-
-.form-addwebsite button{
+.btn-addwebsite{
     margin-top: 10px ;
     padding: 5px;
     font-size: large;

@@ -2,6 +2,10 @@ import { useState } from "react";
 import "../../styles/addWebsiteAccount.css";
 import { addWebsiteAccount } from "../../api/websiteAccounts";
 import { useNavigate } from "react-router-dom";
+import InputForm from "../../components/inputForm";
+import SelectForm from "../../components/selectForm";
+import TextareaForm from "../../components/textareaForm";
+import Form from "../../components/form";
 
 const AddWebsiteAccount = () => {
   const [inputs, setInputs] = useState({});
@@ -34,59 +38,36 @@ const AddWebsiteAccount = () => {
       </header>
 
       <div className="grid-section">
-        <div className="form-container">
-          <form className="form-addwebsite" onSubmit={handleSubmit}>
-            <h3>Website name</h3>
-            <input
-              name="page_name"
-              type="text"
-              value={inputs.page_name || ""}
-              onChange={handleChange}
-              required
-            />
+        <div className="container-addwebsite">
+          <Form onSubmit={handleSubmit}>
+          <h3>Website name</h3>
+            <InputForm name="page_name" type="text" value={inputs.page_name} onChange= {handleChange} mandatory={true}/>
+
             <h3>Email</h3>
-            <input
-              type="email"
-              name="email"
-              value={inputs.email || ""}
-              onChange={handleChange}
-              required
-            />
+            <InputForm name="email"  type="email" value={inputs.email} onChange={handleChange} mandatory={true}/>
+
             <h3>User name</h3>
-            <input
-              type="text"
-              name="user_name"
-              value={inputs.user_name || ""}
-              onChange={handleChange}
-              required
-            />
+            <InputForm name="user_name" type="text" value={inputs.user_name} onChange={handleChange} mandatory={false}/>
+
             <h3>Password</h3>
-            <input
-              type="password"
-              name="password"
-              value={inputs.password || ""}
-              onChange={handleChange}
-              required
-            />
+            <InputForm name="password" type="password" value={inputs.password} onChange={handleChange} mandatory={true}/>
+
             <h3>Category</h3>
-            <select name="category" value={inputs.category || "social_media"} onChange={handleChange} required>
+            <SelectForm name="category" value={inputs.category || "social_media"} onChange={handleChange} mandatory={true}>
                 <option value="social_media" >social_media</option>
                 <option value="email">email</option>
                 <option value="online_shopping">online_shopping</option>
                 <option value="streaming_platform">streaming_platform</option>
                 <option value="other">other</option>
-            </select>
+            </SelectForm>
+
             <h3>Commentary</h3>
-            <textarea
-              name="commentary"
-              cols="30"
-              rows="3"
-              value={inputs.commentary || ""}
-              onChange={handleChange}
-              required
-            ></textarea>
-            <button type="submit">Add</button>
-          </form>
+            <TextareaForm name="commentary" value={inputs.commentary} onChange={handleChange} mandatory={false}/>
+            
+            <button className="btn-addwebsite" type="submit">Add</button>
+
+          </Form>
+          
         </div>
       </div>
     </>

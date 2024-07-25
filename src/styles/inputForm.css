@@ -1,0 +1,9 @@
+.inputForm{
+    background-color: #222222;
+    border: rgb(102, 97, 97) solid 1px;
+    border-radius: 10px;
+    font-size: medium;
+    padding: 8px;
+    width: 100%;
+    color: white
+}

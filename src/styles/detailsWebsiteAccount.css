@@ -1,3 +1,8 @@
+.container-detailswebsiteaccount{
+    display: flex;
+    justify-content: center;
+}
+
 #button-update{
     background-color: #1E40F0;
     color: white;

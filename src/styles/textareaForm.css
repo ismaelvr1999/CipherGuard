@@ -1,0 +1,11 @@
+.textarea-form{
+    background-color: #222222;
+    display: block;
+    border: rgb(102, 97, 97) solid 1px;
+    border-radius: 10px;
+    font-family: Helvetica, sans-serif;
+    font-size: large;
+    padding: 5px;
+    width: 100%;
+    color: white
+}
