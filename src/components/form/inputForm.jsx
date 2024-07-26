@@ -1,4 +1,4 @@
-import '../styles/inputForm.css';
+import '../../styles/form/inputForm.css';
 
 const InputForm = ({name,type,value,onChange,mandatory,defaultValue}) => {
   return (

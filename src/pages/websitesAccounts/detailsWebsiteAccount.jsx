@@ -1,50 +1,15 @@
 import { useParams } from "react-router-dom";
-import { getWebsiteAccount,updateWebAccount } from "../../api/websiteAccounts";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useRef } from "react";
-import "../../styles/detailsWebsiteAccount.css";
-import Form from "../../components/form";
-import UnInputForm from "../../components/unInputForm"; 
-import UnSelectForm from "../../components/unSelectForm";
-import UnTextareaForm from "../../components/unTextareaForm";
-
+import "../../styles/websitesAccounts/detailsWebsiteAccount.css";
+import Form from "../../components/form/form";
+import UnInputForm from "../../components/form/unInputForm"; 
+import UnSelectForm from "../../components/form/unSelectForm";
+import UnTextareaForm from "../../components/form/unTextareaForm";
+import useDetailWebsiteAccount from "../../hooks/websitesAccounts/useDetailsWebsiteAccount";
 
 const DetailsWebsiteAccount = () => {
-  const formRef = useRef(null);
   const { page_id } = useParams(null);
-  const [websiteAccount, setWebsiteAccount] = useState(null);
-  const navigate = useNavigate();
-  useEffect(() => {
-    getWebsiteAccount(page_id)
-      .then((result) => {
-        setWebsiteAccount(result.data.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching getAllWebsiteAccounts:", error.message);
-        localStorage.clear();
-        navigate("/login");
-      });
-  }, [page_id,navigate]);
-
-
-  const updateWebsiteAccount = async() => {
-    const formData = new FormData(formRef.current);
-    const updateWebsiteAccount = {};
-    for (const pair of formData.entries()) {
-        updateWebsiteAccount[pair[0]] = pair[1]
-    }
-    await updateWebAccount(updateWebsiteAccount)      
-    .then(() => {
-      alert("WebsiteAccount updated");
-    })
-    .catch((error) => {
-      console.error("Error fetching updateWebsiteAccount:", error.message);
-      localStorage.clear();
-      navigate("/login");
-    });
-  };
-
+  const {formRef,websiteAccount,updateWebsiteAccount} = useDetailWebsiteAccount(page_id);
+  
   return (
     <>
       <header className="grid-header">

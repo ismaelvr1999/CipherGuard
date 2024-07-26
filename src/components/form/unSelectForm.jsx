@@ -1,4 +1,4 @@
-import '../styles/selectForm.css';
+import '../../styles/form/selectForm.css';
 
 const UnSelectForm = ({name,mandatory,children,defaultValue})=>{
     return (

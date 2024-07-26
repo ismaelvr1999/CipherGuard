@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import '../../styles/summary.css'
+import '../../styles/home/summary.css';
 
 const Summary = ({totalWebsiteAccounts,totalCreditCards,totalIDs})=>{
  return(

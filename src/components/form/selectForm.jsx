@@ -1,4 +1,4 @@
-import '../styles/selectForm.css';
+import '../../styles/form/selectForm.css';
 
 const SelectForm = ({name,value,onChange,mandatory,children,defaultValue})=>{
     return (

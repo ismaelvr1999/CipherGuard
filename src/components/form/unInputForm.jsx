@@ -1,4 +1,4 @@
-import '../styles/inputForm.css';
+import '../../styles/form/inputForm.css';
 
 const UnInputForm = ({name,type,mandatory,defaultValue}) => {
   return (

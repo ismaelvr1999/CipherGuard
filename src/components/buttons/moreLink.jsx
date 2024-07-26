@@ -1,4 +1,4 @@
-import "../styles/moreLink.css";
+import "../../styles/buttons/moreLink.css";
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 

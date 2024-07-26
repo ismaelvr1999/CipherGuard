@@ -1,35 +1,15 @@
-import { useState } from "react";
-import "../../styles/addWebsiteAccount.css";
-import { addWebsiteAccount } from "../../api/websiteAccounts";
-import { useNavigate } from "react-router-dom";
-import InputForm from "../../components/inputForm";
-import SelectForm from "../../components/selectForm";
-import TextareaForm from "../../components/textareaForm";
-import Form from "../../components/form";
+import "../../styles/websitesAccounts/addWebsiteAccount.css";
+import InputForm from "../../components/form/inputForm";
+import SelectForm from "../../components/form/selectForm";
+import TextareaForm from "../../components/form/textareaForm";
+import Form from "../../components/form/form";
+import useHandleOnChange from "../../hooks/useHandleOnChange";
+import useAddwebsiteAccount from "../../hooks/websitesAccounts/useAddwebsiteAccount";
 
 const AddWebsiteAccount = () => {
-  const [inputs, setInputs] = useState({});
-  const navigate = useNavigate();
+  const {handleChange,inputs} = useHandleOnChange();
+  const {handleSubmit} = useAddwebsiteAccount(inputs);
   
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const category = inputs.category || "social_media";
-    const newWebsiteAccount = {...inputs,category:category};
-    const headers ={headers: {Authorization: localStorage.getItem("token")}};
-    await addWebsiteAccount(newWebsiteAccount,headers)
-    .then(()=>{
-      alert("Account added");
-      navigate("/website-accounts")
-    })
-    .catch(error => console.log(error.message))
-  };
-
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-
-    setInputs((values) => ({ ...values, [name]: value }));
-  };
 
   return (
     <>

@@ -1,75 +1,21 @@
-import "../../styles/websitesAccounts.css";
-import { useEffect, useState } from "react";
-import { getAllWebsiteAccounts,deleteWebAccount,searchWebAccount } from "../../api/websiteAccounts";
+import "../../styles/websitesAccounts/addWebsiteAccount.css";
 import { Link } from "react-router-dom";
 import formatDate from "../../utils/formatDate";
-import { useNavigate } from "react-router-dom";
 import Header from "../layout/header";
-import SearchForm from "../../components/searchForm";
-import ReloadTableForm from "../../components/reloadTableForm";
-import DeleteForm from "../../components/deleteForm";
-import MoreLink from "../../components/moreLink";
+import SearchForm from "../../components/buttons/searchForm";
+import ReloadTableForm from "../../components/buttons/reloadTableForm";
+import DeleteForm from "../../components/buttons/deleteForm";
+import MoreLink from "../../components/buttons/moreLink";
 import Table from "../../components/table";
+import useWebsitesAccounts from "../../hooks/websitesAccounts/useWebsitesAccounts";
 
 const WebsiteAccounts = () => {
-  const [websitesAccounts, setWebsitesAccounts] = useState(null);
-  const [searchValue, setSearchValue] = useState("");
-  const navigate = useNavigate();
-
-  const reloadTableData = async () => {
-    await getAllWebsiteAccounts({
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-    })
-      .then((result) => {
-        setWebsitesAccounts(result.data);
-      })
-      .catch((error) => {
-        setWebsitesAccounts(null);
-      });
-  }
-
-  useEffect(() => {
-    getAllWebsiteAccounts({
-      headers: {
-        Authorization: localStorage.getItem("token"),
-      },
-    })
-      .then((result) => {
-        setWebsitesAccounts(result.data);
-      })
-      .catch((error) => {
-        console.log("No websiteAccounts");
-      });
-  }, [ navigate]);
-
-  const handleDelete = async (e)=>{
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const page_id= formData.get("page_id");
-    await deleteWebAccount(page_id)
-    .then(() => {
-      alert("Account deleted");
-      reloadTableData();
-    })
-    .catch((error) => {
-      console.error("Error fetching handleDelete:", error.message);
-      localStorage.clear();
-      navigate("/login");
-    });
-  }
-
-  const handleSearch = async (e)=>{
-    e.preventDefault();
-    await searchWebAccount(searchValue).then((result) => {
-      setWebsitesAccounts(result.data);
-    })
-    .catch((error) => {
-      setWebsitesAccounts(null);
-    });
-
-  }
+  const {websitesAccounts,
+    reloadTableData,
+    handleDelete,
+    handleSearch,
+    searchValue,
+    setSearchValue} = useWebsitesAccounts();
 
   return (
     <>

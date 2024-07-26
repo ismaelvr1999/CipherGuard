@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import '../styles/searchForm.css'
+import '../../styles/buttons/searchForm.css'
 
 const SearchForm = ({handleSearch,searchValue,setSearchValue})=>{
     return (

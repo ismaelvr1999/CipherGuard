@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import "../styles/reloadTableForm.css"
+import "../../styles/buttons/reloadTableForm.css"
 
 const ReloadTableForm = ({reloadTableData}) =>{
     return(

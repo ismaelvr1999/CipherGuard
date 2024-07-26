@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import '../../styles/profile.css'
+import '../../styles/home/profile.css'
 const Profile = ({ user }) => {
   return (
     <div className="container-profile">

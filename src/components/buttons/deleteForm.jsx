@@ -1,5 +1,5 @@
 import { Icon } from "@iconify/react";
-import '../styles/deleteForm.css';
+import '../../styles/buttons/deleteForm.css';
 const DeleteForm = ({ handleDelete,id,inputName}) => {
   return (
     <form onSubmit={handleDelete}>

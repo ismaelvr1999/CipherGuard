@@ -1,4 +1,4 @@
-import "../styles/textareaForm.css";
+import "../../styles/form/textareaForm.css";
 
 const UnTextareaForm = ({name,mandatory,defaulValue}) =>{
     return (

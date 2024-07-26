@@ -1,4 +1,4 @@
-import '../styles/form.css';
+import '../../styles/form/form.css';
 
 const Form = ({children,onSubmit,refe})=>{
     return(
