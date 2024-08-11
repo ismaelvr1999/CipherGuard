@@ -6,7 +6,7 @@ import Summary from "./summary";
 import useHome from "../../hooks/home/useHome";
 
 const Home = () => {
-  const {user,totalWebsiteAccounts} = useHome();
+  const {user,totalWebsiteAccounts,cardTotal} = useHome();
   return (
     <>
       <Header title={user && `Welcome ${user.data.first_name}` } />
@@ -14,7 +14,7 @@ const Home = () => {
         <Profile user={user} />
 
         <Summary totalWebsiteAccounts={totalWebsiteAccounts} 
-        totalCreditCards={{total:"0",title:"Total Credit Cards"}}
+        totalCreditCards={cardTotal}
          totalIDs={{total:"0",title:"Total IDs"}}/>
       </div>
     </>

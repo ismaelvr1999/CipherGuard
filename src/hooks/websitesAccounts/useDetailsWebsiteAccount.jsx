@@ -19,7 +19,6 @@ const useDetailWebsiteAccount = (page_id) =>{
         });
     }, [page_id,navigate]);
   
-  
     const updateWebsiteAccount = async() => {
       const formData = new FormData(formRef.current);
       const updateWebsiteAccount = {};

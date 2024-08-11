@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUser } from "../../api/user";
 import { getTotalWebAccountsByUser } from "../../api/websiteAccounts";
+import { getTotalCardsByUser } from "../../api/cards";
 
 const useHome = ()=>{
     const [user, setUser] = useState(null);
     const [totalWebsiteAccounts, setTotalwebsiteAccounts] = useState(null);
+    const [cardTotal, setCardTotal] = useState(null);
     const navigate = useNavigate();
   
     useEffect(() => {
@@ -35,11 +37,21 @@ const useHome = ()=>{
         localStorage.clear();
         navigate("/login");
       });
+
+      getTotalCardsByUser().then((result) => {
+        setCardTotal({total: result.data.data.total, title: "Total of Cards"});
+      })
+      .catch((error) => {
+        console.error("Error fetching TotalGetTotalCardsByUser:", error.message);
+        localStorage.clear();
+        navigate("/login");
+      });
     }, [setTotalwebsiteAccounts,setUser,navigate]);
 
     return{
         user,
-        totalWebsiteAccounts
+        totalWebsiteAccounts,
+        cardTotal
     };
 };
 

@@ -24,9 +24,9 @@ const Navbar = () => {
         <Icon className="menu-icon" icon="material-symbols-light:password" />{" "}
         <h2>Websites Accounts</h2>
       </Link>
-      <Link className="link" to="/">
+      <Link className="link" to="/cards">
         <Icon className="menu-icon" icon="quill:creditcard" />{" "}
-        <h2>Credit Cards</h2>
+        <h2>Cards</h2>
       </Link>
       <div className="info-account">
         <Icon className="account-icon" icon="solar:user-outline" />

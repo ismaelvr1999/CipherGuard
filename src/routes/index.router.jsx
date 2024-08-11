@@ -4,6 +4,9 @@ import homeRouter from "./home.router";
 import webSiteAccountsRouter from "./websiteAccounts.router";
 import addWebsiteAccountRouter from "./addWebsiteAccount.router";
 import detailsWebsiteAccountRouter from "./detailsWebsiteAccount.router";
+import cardsRouter from "./cards.router";
+import addCardRouter from "./addCard.router";
+import detailsCardRouter from "./detailsCard.router"
 import Layout from "../pages/layout/layout";
 
 const router = createBrowserRouter([
@@ -14,7 +17,10 @@ const router = createBrowserRouter([
       homeRouter,
       webSiteAccountsRouter,
       addWebsiteAccountRouter,
-      detailsWebsiteAccountRouter
+      detailsWebsiteAccountRouter,
+      cardsRouter,
+      addCardRouter,
+      detailsCardRouter
     ]
   }, 
   loginRouter
