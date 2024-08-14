@@ -28,6 +28,10 @@ const Navbar = () => {
         <Icon className="menu-icon" icon="quill:creditcard" />{" "}
         <h2>Cards</h2>
       </Link>
+      <Link className="link" to="/passports">
+        <Icon className="menu-icon" icon="solar:passport-outline" />{" "}
+        <h2>Passports</h2>
+      </Link>
       <div className="info-account">
         <Icon className="account-icon" icon="solar:user-outline" />
         <h2>Ismael</h2>

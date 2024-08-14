@@ -1,7 +1,7 @@
 import { Icon } from "@iconify/react";
 import '../../styles/home/summary.css';
 
-const Summary = ({totalWebsiteAccounts,totalCreditCards,totalIDs})=>{
+const Summary = ({totalWebsiteAccounts,totalCreditCards,totalPassports})=>{
  return(
     <div className="summary-container">
     <div className="summary-card">
@@ -18,9 +18,9 @@ const Summary = ({totalWebsiteAccounts,totalCreditCards,totalIDs})=>{
       <h3>{totalCreditCards && totalCreditCards.total}</h3>
     </div>
     <div className="summary-card">
-      <Icon className="summary-icon" icon="solar:user-outline" />
-      <h3>{totalIDs && totalIDs.title}</h3>
-      <h3>{totalIDs && totalIDs.total}</h3>
+      <Icon className="summary-icon" icon="solar:passport-outline" />
+      <h3>{totalPassports && totalPassports.title}</h3>
+      <h3>{totalPassports && totalPassports.total}</h3>
     </div>
   </div>
  );

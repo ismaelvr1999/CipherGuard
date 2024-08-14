@@ -6,7 +6,10 @@ import addWebsiteAccountRouter from "./addWebsiteAccount.router";
 import detailsWebsiteAccountRouter from "./detailsWebsiteAccount.router";
 import cardsRouter from "./cards.router";
 import addCardRouter from "./addCard.router";
-import detailsCardRouter from "./detailsCard.router"
+import detailsCardRouter from "./detailsCard.router";
+import passportsRouter from "./passports.router";
+import addPassportRouter from "./addPassport.router";
+import detailsPassportRouter from "./detailsPassport.router";
 import Layout from "../pages/layout/layout";
 
 const router = createBrowserRouter([
@@ -20,7 +23,10 @@ const router = createBrowserRouter([
       detailsWebsiteAccountRouter,
       cardsRouter,
       addCardRouter,
-      detailsCardRouter
+      detailsCardRouter,
+      passportsRouter,
+      addPassportRouter,
+      detailsPassportRouter
     ]
   }, 
   loginRouter

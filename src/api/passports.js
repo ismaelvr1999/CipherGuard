@@ -1,54 +1,56 @@
 import axios from "./axios";
-export const addCard = async (newCard)=>{
-    return await axios.post("/cards",newCard,{
+
+export const getTotalPassportsByUser = async ()=>{
+    return await axios.get("/passports/total",{
         headers:{
             Authorization: localStorage.getItem("token")
         }
     });
-};
+}
 
-export const getCards = async()=>{
-    return await axios.get("/cards",{
+export const getPassports = async()=>{
+    return await axios.get("/passports",{
         headers:{
             Authorization: localStorage.getItem("token")
         }
     })
 };
 
-export const getCard = async(card_id)=>{
-    return await axios.get(`/cards/${card_id}`,{
+export const getPassport = async(passport_id)=>{
+    return await axios.get(`/passports/${passport_id}`,{
         headers:{
             Authorization: localStorage.getItem("token")
         }
     })
 };
 
-export const getTotalCardsByUser = async()=>{
-    return await axios.get("/cards/total",{
+
+export const addPassport = async (newPassport)=>{
+    return await axios.post("/passports",newPassport,{
         headers:{
             Authorization: localStorage.getItem("token")
         }
     });
 };
 
-export const updateCard = async (card)=>{
-    return await axios.put(`/cards/${card.card_id}`,card,{
+export const updatePassport = async (passport)=>{
+    return await axios.put(`/passports/${passport.passport_id}`,passport,{
         headers: {
           Authorization: localStorage.getItem("token")
         }
       });
 };
 
-export const deleteCard = async (id)=>{
-    return await axios.delete(`/cards/${id}`,{
+export const deletePassport = async (id)=>{
+    return await axios.delete(`/passports/${id}`,{
         headers: {
           Authorization: localStorage.getItem("token")
         }
       });
 };
 
-export const searchCard = async (searchValue)=>{
-    return await axios.get(`/cards`,{
+export const searchPassport = async (searchValue)=>{
+    return await axios.get(`/passports`,{
         headers: {
           Authorization: localStorage.getItem("token")
         },
