@@ -3,10 +3,11 @@ import "../../styles/layout/navbar.css";
 import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import useUser from "../../hooks/useUser";
 
 const Navbar = () => {
   const navigate = useNavigate();
-
+  const user = useUser();
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/login");
@@ -34,7 +35,7 @@ const Navbar = () => {
       </Link>
       <div className="info-account">
         <Icon className="account-icon" icon="solar:user-outline" />
-        <h2>Ismael</h2>
+        <h2>{user && user.first_name}</h2>
         <button onClick={handleLogout}> Logout</button>
       </div>
     </nav>
