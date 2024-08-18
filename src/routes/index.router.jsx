@@ -10,6 +10,7 @@ import detailsCardRouter from "./detailsCard.router";
 import passportsRouter from "./passports.router";
 import addPassportRouter from "./addPassport.router";
 import detailsPassportRouter from "./detailsPassport.router";
+import signUpRouter from "./signUp.router";
 import Layout from "../pages/layout/layout";
 
 const router = createBrowserRouter([
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
       detailsPassportRouter
     ]
   }, 
-  loginRouter
+  loginRouter,
+  signUpRouter
 ]);
 
 export default router;

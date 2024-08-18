@@ -32,7 +32,7 @@ const useHome = ()=>{
           Authorization: localStorage.getItem("token"),
         },
       }).then((result) => {
-        setTotalwebsiteAccounts({total: result.data.data.total, title: "Total Websites Accounts"});
+        setTotalwebsiteAccounts({total: result.data.data.total, title: "Total of Websites Accounts"});
       })
       .catch((error) => {
         console.error("Error fetching TotalWebAccountsByUser:", error.message);
